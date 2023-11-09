@@ -1,5 +1,8 @@
-import type { RGBColor } from "react-color"
-import type { ClientToServerEvents, ServerToClientEvents } from "shared"
+import type {
+	ClientToServerEvents,
+	MyRGBColor,
+	ServerToClientEvents,
+} from "shared"
 import { Server } from "socket.io"
 import dotenv from "dotenv"
 import { z } from "zod"
@@ -18,7 +21,7 @@ const io = new Server<ClientToServerEvents, ServerToClientEvents>({
 	},
 })
 
-let color: RGBColor = { r: 255, g: 255, b: 255, a: 1 }
+let color: MyRGBColor = { r: 255, g: 255, b: 255, a: 1 }
 
 io.on("connection", (socket) => {
 	console.log("New connection")

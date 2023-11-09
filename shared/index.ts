@@ -1,9 +1,9 @@
-import { RGBColor } from "react-color"
+export type MyRGBColor = { r: number; g: number; b: number; a?: number }
 
 export interface ServerToClientEvents {
-	changeColor: (color: RGBColor) => void
+	changeColor: (color: MyRGBColor) => void
 }
 
 export interface ClientToServerEvents {
-	changeColor: (color: RGBColor) => void
+	changeColor: (color: MyRGBColor) => void
 }
