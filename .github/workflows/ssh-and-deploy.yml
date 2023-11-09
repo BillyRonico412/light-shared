@@ -17,4 +17,4 @@ jobs:
             sudo docker stop ${{ secrets.NAME }} || true && sudo docker rm ${{ secrets.NAME }} || true
             cd ./back
             sudo docker image build -t ${{ secrets.NAME }} .
-            sudo docker container run --name ${{ secrets.NAME }} -d -p ${{ secrets.PORT }}:3000 -v /root/${{ secrets.NAME }}/server/.env:/app/.env ${{ secrets.NAME }}
+            sudo docker container run --name ${{ secrets.NAME }} -d -p ${{ secrets.PORT }}:3000 -v /root/${{ secrets.NAME }}/back/.env:/app/.env ${{ secrets.NAME }}
