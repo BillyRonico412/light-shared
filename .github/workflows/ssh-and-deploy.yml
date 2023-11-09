@@ -1,0 +1,20 @@
+name: remote ssh command
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          script: |
+            cd ${{ secrets.NAME }} 
+            git pull 
+            sudo docker stop ${{ secrets.NAME }} || true && sudo docker rm ${{ secrets.NAME }} || true
+            cd ./server
+            sudo docker image build -t ${{ secrets.NAME }} .
+            sudo docker container run --name ${{ secrets.NAME }} -d -p ${{ secrets.PORT }}:3000 -v /root/${{ secrets.NAME }}/server/.env:/app/.env ${{ secrets.NAME }}
