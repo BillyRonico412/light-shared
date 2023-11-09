@@ -1,10 +1,20 @@
 import { RGBColor } from "react-color"
 import type { ClientToServerEvents, ServerToClientEvents } from "shared"
 import { Server } from "socket.io"
+import dotenv from "dotenv"
+import { z } from "zod"
+
+dotenv.config()
+
+const zodEnv = z.object({
+	CLIENT_URL: z.string(),
+})
+
+const env = zodEnv.parse(process.env)
 
 const io = new Server<ClientToServerEvents, ServerToClientEvents>({
 	cors: {
-		origin: "http://localhost:5173",
+		origin: env.CLIENT_URL,
 	},
 })
 
