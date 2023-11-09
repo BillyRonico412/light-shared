@@ -1,4 +1,4 @@
-import { RGBColor } from "react-color"
+import type { RGBColor } from "react-color"
 import type { ClientToServerEvents, ServerToClientEvents } from "shared"
 import { Server } from "socket.io"
 import dotenv from "dotenv"
