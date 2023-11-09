@@ -1,11 +1,9 @@
 FROM node:20-alpine3.17
 
-COPY ./package.json /app/package.json
+COPY . /app
 
 RUN cd /app && npm install
 
-COPY . /app
-
-WORKDIR /app
+WORKDIR /app/back
 
 CMD npm run prod
