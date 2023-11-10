@@ -37,7 +37,7 @@ const App = () => {
 		>
 			<h1 className={`text-3xl font-bold ${colorText}`}>Light shared</h1>
 			<ChromePicker
-				className="w-[300px]"
+				className="w-[300px] chrome-picker"
 				color={color}
 				onChangeComplete={(color) => {
 					setColor(color.rgb)

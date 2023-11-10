@@ -7,3 +7,8 @@
 body {
   font-family: 'Kanit', sans-serif;
 }
+
+.chrome-picker {
+  font-family: 'Kanit', sans-serif !important;
+  @apply font-bold;
+}
